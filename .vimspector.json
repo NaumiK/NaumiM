@@ -1,0 +1,53 @@
+{
+  "configurations": {
+    "run python" : {
+      "adapter": "debugpy",
+      "configuration": {
+        "request":"launch",
+        "protocol": "auto",
+        "stopOnEntry":true,
+        "externalConsole": false,
+        "console":"integratedTerminal",
+        "program": "${workspaceFolder}/1.py",
+        "cwd": "${workspaceFolder}/"
+      }
+    },
+    "run g++" : {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "request":"launch",
+        "protocol": "auto",
+        "stopOnEntry":true,
+        "targetArchitecture": "x86_64",
+        "logging": {
+                "moduleLoad": true,
+                "programOutput": true,
+                "trace": false
+        },
+        "externalConsole": false,
+        "program": "${workspaceFolder}/build/apps/1.exe",
+        "cwd": "${workspaceFolder}/apps",
+        "breakpoints": {
+           "exception": {
+             "cpp_throw": "Y",
+             "cpp_catch": "Y"
+           }
+         },
+         "windows": {
+             "MImode" : "gdb"
+         },
+         "osx": {
+             "MImode": "lldb"
+         },
+         "setupCommands": [
+             {
+                 "description": "Enable auto format for gdb",
+                 "text": "-enable-pretty-printing",
+                 "ignoreFailures": true
+             }
+         ],
+        "preLaunchTask": "C/C++: g++ build active file"
+      }
+    }
+  }
+}
